@@ -1,74 +1,83 @@
 
 
-### ✅ **Question (Problem Statement)**
+## What's the Question?
 
-Write a function `fun(w, x)` that performs the following:
+We have a simple C function that takes two numbers and does something with them. Let's see what happens when we give it `a = 6` and `b = 1`.
 
-* Initialize a variable `y` to `0`.
-* Check if either:
+The function is supposed to:
+- Double the first number (a)
+- Double the second number (b)  
+- Add them together and give us the answer
 
-  * `x` is divisible by `w`, OR
-  * `w` is divisible by `x`
-* If the condition is true, increment `y` by `1`.
-* Otherwise, increment `y` by `10`.
-* Print the value of `y` inside the function.
-* Call the function with parameters `(40, 4)` and print the return value of the function.
+## Let's Think Through It Step by Step
 
----
+**Starting with:** a = 6, b = 1
 
-### 🧠 **Pseudo Code**
+**Step 1:** Double the value of a
+- a was 6
+- a + a = 6 + 6 = 12
+- Now a = 12
 
-```
-FUNCTION fun(w, x)
-    SET y = 0
-    IF (x MOD w == 0) OR (w MOD x == 0) THEN
-        y = y + 1
-    ELSE
-        y = y + 10
-    END IF
-    PRINT y
-END FUNCTION
+**Step 2:** Double the value of b  
+- b was 1
+- b + b = 1 + 1 = 2
+- Now b = 2
 
-CALL fun(40, 4)
-```
+**Step 3:** Add them together
+- a + b = 12 + 2 = 14
 
-> Note: In the original code, the `fun` function **does not return anything** (i.e., `None` in Python). It only prints `y`. So, `print(fun(40,4))` will print the result of the print inside the function, and then print `None`.
+**Answer:** 14
 
----
+## The C Code
 
-### 🔍 **Step-by-Step Analysis**
+Here's what the actual code looks like:
 
-Calling: `fun(40, 4)`
+```c
+#include <stdio.h>
 
-* `w = 40`
-* `x = 4`
+int funn(int a, int b) {
+    a = a + a;  // 6 becomes 12
+    b = b + b;  // 1 becomes 2
+    return a + b;  // 12 + 2 = 14
+}
 
-Check condition:
-
-* `x % w == 0` → `4 % 40 == 4` → ❌ False
-* `w % x == 0` → `40 % 4 == 0` → ✅ True
-
-Since one of the conditions is true, the `if` block executes:
-
-* `y = y + 1` → `y = 0 + 1 = 1`
-
-Then:
-
-* Print `1` (inside function)
-* Function returns `None` by default (no `return` statement)
-
-So:
-
-* Output from `print(y)` inside function = `1`
-* Output from `print(fun(...))` = `None`
-
----
-
-### 🖨️ **Final Output on Console**
-
-```
-1
-None
+int main() {
+    int result = funn(6, 1);
+    printf("%d\n", result);
+    return 0;
+}
 ```
 
+## What Happens When We Run It?
 
+The program will print: **14**
+
+## Why Does This Work?
+
+Think of it like this:
+- You have 6 apples, you get 6 more → now you have 12 apples
+- You have 1 orange, you get 1 more → now you have 2 oranges  
+- Total fruit = 12 + 2 = 14 pieces of fruit
+
+## Let's Try Other Examples
+
+- If a = 3 and b = 4:
+  - Double 3 → 6
+  - Double 4 → 8  
+  - Answer: 6 + 8 = 14
+
+- If a = 0 and b = 5:
+  - Double 0 → 0
+  - Double 5 → 10
+  - Answer: 0 + 10 = 10
+
+- If a = 2 and b = 2:
+  - Double 2 → 4
+  - Double 2 → 4
+  - Answer: 4 + 4 = 8
+
+## The Simple Answer
+
+When we put a = 6 and b = 1 into our function, we get **14** as the output.
+
+That's it! Pretty simple, right?
